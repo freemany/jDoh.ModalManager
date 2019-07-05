@@ -1,7 +1,7 @@
 let modalStack = [];
 let currentModal = null;
 // let prevOpenModal = null;
-const config = {maxStackCount: 10};
+const config = {maxStackCount: 5};
 
 function _search(id) {
 
@@ -103,6 +103,11 @@ function getStatus()
     return {currentModal}
 }
 
-const ModalManagerTest = {getModalStack, goNextModal, goPrevModal, showModal, hideAll, reset, getStatus};
+function getConfig()
+{
+    return config;
+}
+
+const ModalManagerTest = {getModalStack, goNextModal, goPrevModal, showModal, hideAll, reset, getStatus, getConfig};
 
 export {goNextModal, goPrevModal, showModal, hideAll, ModalManagerTest};

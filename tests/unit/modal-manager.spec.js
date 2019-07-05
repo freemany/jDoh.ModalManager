@@ -97,4 +97,53 @@ describe('Modal manager', () => {
         ModalManagerTest.hideAll();
         expect(ModalManagerTest.getStatus().currentModal.shown).toBe(false);
     })
+
+    it('test hook', () => {
+
+        let showCount = 0;
+        let hideCount = 0;
+
+        ModalManagerTest.showModal({
+            id: 'modal_0',
+            show: () => {},
+            hide: () => {},
+            onClose: () => hideCount ++,
+            onShow: () => showCount ++,
+        });
+
+        expect(showCount).toBe(1);
+
+        ModalManagerTest.hideAll();
+
+        expect(hideCount).toBe(1);
+        expect(showCount).toBe(1);
+
+        ModalManagerTest.showModal({
+            id: 'modal_1',
+            show() {
+            },
+            hide() {
+            },
+        });
+        expect(hideCount).toBe(2);
+        expect(showCount).toBe(1);
+
+        ModalManagerTest.goPrevModal();
+        expect(hideCount).toBe(2);
+        expect(showCount).toBe(2);
+    })
+
+    it('test max stack', () => {
+        const count = ModalManagerTest.getConfig().maxStackCount + 1;
+
+        for(let i=0; i<count; i++) {
+            ModalManagerTest.showModal({
+                id: 'modal_' + i,
+                show() {},
+                hide() {},
+            });
+        }
+
+        expect(ModalManagerTest.getModalStack().length).toBe(ModalManagerTest.getConfig().maxStackCount);
+    })
 });
