@@ -48,7 +48,8 @@ function showModal(modal) {
         if (null === result) {
             return false;
         }
-         _show(result[0], result[1]);
+        hide();
+        _show(result[0], result[1]);
 
         return true;
     }
@@ -57,7 +58,8 @@ function showModal(modal) {
     if (modalStack.length > config.maxStackCount) {
         modalStack.shift();
     }
-    if (currentModal) {
+
+    if (currentModal && currentModal.shown) {
         _hide(currentModal.modal);
     }
     _show(modal, modalStack.length - 1);

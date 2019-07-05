@@ -125,11 +125,11 @@ describe('Modal manager', () => {
             hide() {
             },
         });
-        expect(hideCount).toBe(2);
+        expect(hideCount).toBe(1);
         expect(showCount).toBe(1);
 
         ModalManagerTest.goPrevModal();
-        expect(hideCount).toBe(2);
+        expect(hideCount).toBe(1);
         expect(showCount).toBe(2);
     })
 
