@@ -34,7 +34,7 @@
         mounted() {
             window.open = this.open;
             window.openBv = this.openBv;
-            window.hideAll = this.hideAll;
+            window.hide = this.hide;
             window.next = this.next;
             window.prev = this.prev;
             window.openId = this.openId;
@@ -68,7 +68,7 @@
                     },
                 });
             },
-            hideAll() {
+            hide() {
                 this.$modal.hide('modal1');
             }
         }

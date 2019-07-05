@@ -94,7 +94,7 @@ describe('Modal manager', () => {
         // check if shown
         expect(ModalManagerTest.getStatus().currentModal.shown).toBe(true);
         // hide
-        ModalManagerTest.hideAll();
+        ModalManagerTest.hide();
         expect(ModalManagerTest.getStatus().currentModal.shown).toBe(false);
     })
 
@@ -113,7 +113,7 @@ describe('Modal manager', () => {
 
         expect(showCount).toBe(1);
 
-        ModalManagerTest.hideAll();
+        ModalManagerTest.hide();
 
         expect(hideCount).toBe(1);
         expect(showCount).toBe(1);

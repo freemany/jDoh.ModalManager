@@ -28,7 +28,7 @@ function goNextModal() {
         return false;
     }
 
-    hideAll();
+    hide();
     _show(modalStack[nextIndex], nextIndex);
 }
 
@@ -37,7 +37,7 @@ function goPrevModal() {
     if (undefined === modalStack[prevIndex]) {
         return false;
     }
-    hideAll();
+    hide();
     _show(modalStack[prevIndex], prevIndex);
 }
 
@@ -71,7 +71,7 @@ function _show(modal, index) {
     currentModal = {index, modal, id: modal.id, shown: true};
 }
 
-function hideAll() {
+function hide() {
     if (null === currentModal) {
         return false;
     }
@@ -108,6 +108,6 @@ function getConfig()
     return config;
 }
 
-const ModalManagerTest = {getModalStack, goNextModal, goPrevModal, showModal, hideAll, reset, getStatus, getConfig};
+const ModalManagerTest = {getModalStack, goNextModal, goPrevModal, showModal, hide, reset, getStatus, getConfig};
 
-export {goNextModal, goPrevModal, showModal, hideAll, ModalManagerTest};
+export {goNextModal, goPrevModal, showModal, hide, ModalManagerTest};
